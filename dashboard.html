@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Dashboard | KalaSetu AI</title>
+    <link rel="stylesheet" href="../style.css">
+
+```
+<style>
+    .dashboard {
+        display: flex;
+        min-height: 85vh;
+    }
+
+    .sidebar {
+        width: 240px;
+        background: #4b3023;
+        color: white;
+        padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+        font-size: 21px;
+        margin-bottom: 35px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 14px 12px;
+        margin-bottom: 10px;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+        background: #75452c;
+    }
+
+    .dashboard-content {
+        flex: 1;
+        padding: 40px;
+        background: #fffaf3;
+        min-width: 0;
+    }
+
+    .dashboard-content h1 {
+        color: #75452c;
+        margin-bottom: 12px;
+    }
+
+    .welcome-text {
+        color: #72645a;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .dashboard-card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .dashboard-card .icon {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .dashboard-card h3 {
+        color: #75452c;
+        margin-bottom: 10px;
+    }
+
+    .dashboard-card p {
+        color: #72645a;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+    .card-button {
+        display: inline-block;
+        background: #75452c;
+        color: white;
+        text-decoration: none;
+        padding: 11px 17px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .card-button:hover {
+        background: #59331f;
+    }
+
+    .dashboard-note {
+        margin-top: 25px;
+        padding: 18px;
+        background: #f0dfcb;
+        border-radius: 8px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+        .dashboard {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: auto;
+        }
+
+        .dashboard-content {
+            padding: 25px 18px;
+        }
+
+        .dashboard-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header>
+    <div class="logo">KalaSetu <span>AI</span></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="products.html">Explore Products</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<main class="dashboard">
+
+    <aside class="sidebar">
+        <h2>Artisan Panel</h2>
+
+        <a href="dashboard.html" class="active">🏠 Dashboard</a>
+        <a href="add-product.html">➕ Add Product</a>
+        <a href="products.html">🛍️ My Products</a>
+        <a href="verification.html">📋 Verification</a>
+        <a href="login.html">🚪 Logout</a>
+        <a href="profile.html">My Profile</a>
+    </aside>
+
+    <section class="dashboard-content">
+
+        <h1>Welcome, Artisan! 👋</h1>
+
+        <p class="welcome-text">
+            Welcome to KalaSetu AI. Showcase your creativity,
+            manage your handmade products and reach more customers.
+        </p>
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <div class="icon">👤</div>
+                <h3>My Profile</h3>
+                <p>Manage your artisan details, craft information
+                   and preferred language.</p>
+                <a href="register.html" class="card-button">
+                    View Profile
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="icon">🎨</div>
+                <h3>Add Product</h3>
+                <p>Add your handmade product details, price,
+                   description and images.</p>
+                <a href="add-product.html" class="card-button">
+                    Add Product
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="icon">🛍️</div>
+                <h3>My Products</h3>
+                <p>Explore product listings and manage the
+                   products you have added.</p>
+                <a href="products.html" class="card-button">
+                    View Products
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="icon">📋</div>
+                <h3>Verification Status</h3>
+                <p>Submit your craft evidence and check your
+                   artisan verification status.</p>
+                <a href="verification.html" class="card-button">
+                    Check Status
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="icon">✨</div>
+                <h3>AI Description Generator</h3>
+                <p>Get help creating a product description
+                   using your product details.</p>
+                <a href="add-product.html" class="card-button">
+                    Generate Description
+                </a>
+            </div>
+
+        </div>
+
+        <div class="dashboard-note">
+            <strong>Tip:</strong> Add accurate product details and
+            clear images to help customers understand your craft.
+        </div>
+
+    </section>
+
+</main>
+```
+
+</body>
+</html>

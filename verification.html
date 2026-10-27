@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Artisan Verification | KalaSetu AI</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+    .verification-section {
+        padding: 45px 20px;
+        background: #fffaf3;
+        min-height: 80vh;
+    }
+
+    .verification-container {
+        max-width: 750px;
+        margin: auto;
+        padding: 35px;
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    }
+
+    .verification-container h1 {
+        color: #75452c;
+        margin-bottom: 12px;
+    }
+
+    .intro {
+        color: #72645a;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+
+    .info-box {
+        background: #f0dfcb;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 9px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #ddcabb;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .help-text {
+        display: block;
+        color: #72645a;
+        font-size: 12px;
+        margin-top: 7px;
+        line-height: 1.5;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 6px;
+        background: #75452c;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background: #59331f;
+    }
+
+    .status-card {
+        margin-top: 25px;
+        padding: 20px;
+        border: 1px solid #ddcabb;
+        border-radius: 8px;
+        background: #fffaf3;
+    }
+
+    .status-card h3 {
+        color: #75452c;
+        margin-bottom: 10px;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 7px 13px;
+        border-radius: 20px;
+        background: #f0dfcb;
+        color: #75452c;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .message {
+        margin-top: 18px;
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+        .verification-container {
+            padding: 22px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header>
+    <div class="logo">KalaSetu <span>AI</span></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html">Products</a>
+    </nav>
+</header>
+
+<section class="verification-section">
+
+    <div class="verification-container">
+
+        <h1>Artisan Verification</h1>
+
+        <p class="intro">
+            Share information about your craft and submit supporting
+            evidence to request artisan verification.
+        </p>
+
+        <div class="info-box">
+            <strong>Why verify your craft?</strong><br>
+            This process helps the platform review artisan information
+            and supporting evidence. Submission does not guarantee approval.
+        </div>
+
+        <form id="verificationForm">
+
+            <div class="form-group">
+                <label for="artisanName">Artisan Name *</label>
+
+                <input
+                    type="text"
+                    id="artisanName"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="craftType">Type of Craft *</label>
+
+                <select id="craftType" required>
+                    <option value="">Select your craft</option>
+                    <option value="Pottery">Pottery</option>
+                    <option value="Handloom">Handloom</option>
+                    <option value="Wooden Crafts">Wooden Crafts</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Handicrafts">Handicrafts</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Years of Experience *</label>
+
+                <input
+                    type="number"
+                    id="experience"
+                    min="0"
+                    max="100"
+                    placeholder="Enter years of experience"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="location">Village / City *</label>
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter your location"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="craftDetails">Describe Your Craft *</label>
+
+                <textarea
+                    id="craftDetails"
+                    placeholder="Explain how you create your products..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="workImage">Upload Work Sample *</label>
+
+                <input
+                    type="file"
+                    id="workImage"
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                >
+
+                <span class="help-text">
+                    Select a JPG, PNG or WebP image of your handmade work.
+                    Maximum size: 5 MB.
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="evidence">Supporting Document (Optional)</label>
+
+                <input
+                    type="file"
+                    id="evidence"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                >
+
+                <span class="help-text">
+                    Upload relevant supporting evidence only if appropriate.
+                    Avoid submitting unnecessary sensitive personal information.
+                </span>
+            </div>
+
+            <button type="submit" class="submit-button">
+                Submit for Verification
+            </button>
+
+            <p id="message" class="message" aria-live="polite"></p>
+
+        </form>
+
+        <div class="status-card">
+            <h3>Verification Status</h3>
+
+            <span class="status-badge" id="statusBadge">
+                Not Submitted
+            </span>
+
+            <p id="statusMessage" style="margin-top:12px; color:#72645a;">
+                Submit the form to begin the verification process.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    const form = document.getElementById("verificationForm");
+    const message = document.getElementById("message");
+    const statusBadge = document.getElementById("statusBadge");
+    const statusMessage = document.getElementById("statusMessage");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const experience =
+            Number(document.getElementById("experience").value);
+
+        const workImage =
+            document.getElementById("workImage").files[0];
+
+        const evidence =
+            document.getElementById("evidence").files[0];
+
+        if (experience < 0 || experience > 100) {
+            message.textContent =
+                "Please enter experience between 0 and 100 years.";
+            message.style.color = "red";
+            return;
+        }
+
+        const allowedImages = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
+
+        if (!workImage || !allowedImages.includes(workImage.type)) {
+            message.textContent =
+                "Please select a valid JPG, PNG or WebP work sample.";
+            message.style.color = "red";
+            return;
+        }
+
+        if (workImage.size > 5 * 1024 * 1024) {
+            message.textContent =
+                "The work sample must be smaller than 5 MB.";
+            message.style.color = "red";
+            return;
+        }
+
+        if (evidence) {
+            const allowedDocuments = [
+                "application/pdf",
+                "image/jpeg",
+                "image/png"
+            ];
+
+            if (!allowedDocuments.includes(evidence.type)) {
+                message.textContent =
+                    "Please select a PDF, JPG or PNG document.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (evidence.size > 5 * 1024 * 1024) {
+                message.textContent =
+                    "The supporting document must be smaller than 5 MB.";
+                message.style.color = "red";
+                return;
+            }
+        }
+
+        message.textContent =
+            "Form validated. Backend submission is pending.";
+        message.style.color = "green";
+
+        statusBadge.textContent = "Pending Submission";
+        statusMessage.textContent =
+            "The form passed browser validation, but it has not been " +
+            "sent to the server. Connect the backend to submit evidence " +
+            "and obtain the actual review status.";
+    });
+</script>
+```
+
+</body>
+</html>

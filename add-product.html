@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | KalaSetu AI</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .product-section {
+            padding: 45px 20px;
+            background: #fffaf3;
+            min-height: 85vh;
+        }
+
+        .product-container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .product-container h1 {
+            color: #75452c;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #72645a;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddcabb;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid #c77942;
+            border-color: transparent;
+        }
+
+        .image-preview {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: none;
+            background: #fffaf3;
+        }
+
+        .ai-button,
+        .save-button {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .ai-button {
+            background: #f0dfcb;
+            color: #75452c;
+            margin-bottom: 15px;
+        }
+
+        .save-button {
+            width: 100%;
+            background: #75452c;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .save-button:hover {
+            background: #59331f;
+        }
+
+        .ai-button:hover {
+            background: #e8d1b8;
+        }
+
+        .message {
+            margin-top: 18px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .product-container {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KalaSetu <span>AI</span></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html">My Products</a>
+        <a href="profile.html">My Profile</a>
+    </nav>
+</header>
+
+<section class="product-section">
+
+    <div class="product-container">
+
+        <h1>Add Your Handmade Product</h1>
+
+        <p class="subtitle">
+            Showcase your creativity and introduce your
+            traditional craft to customers.
+        </p>
+
+        <form id="productForm">
+
+            <div class="form-group">
+                <label for="productName">Product Name *</label>
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Example: Handmade Clay Pot"
+                    required
+                    maxlength="100"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="category">Product Category *</label>
+
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Pottery">Pottery</option>
+                    <option value="Handloom">Handloom</option>
+                    <option value="Wooden Crafts">Wooden Crafts</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Home Decor">Home Decor</option>
+                    <option value="Handicrafts">Handicrafts</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price (₹) *</label>
+
+                <input
+                    type="number"
+                    id="price"
+                    min="1"
+                    step="0.01"
+                    placeholder="Enter product price"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="material">Product Material</label>
+
+                <input
+                    type="text"
+                    id="material"
+                    placeholder="Example: Clay, Cotton, Wood"
+                    maxlength="150"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="description">Product Description *</label>
+
+                <textarea
+                    id="description"
+                    placeholder="Describe your handmade product..."
+                    required
+                    maxlength="1000"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="productImage">Product Image *</label>
+
+                <input
+                    type="file"
+                    id="productImage"
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                >
+
+                <img
+                    id="imagePreview"
+                    class="image-preview"
+                    alt="Selected product preview"
+                >
+            </div>
+
+            <button type="button" class="ai-button" id="aiButton">
+                ✨ Generate AI Description
+            </button>
+
+            <br>
+
+            <button type="submit" class="save-button">
+                Save Product
+            </button>
+
+            <p id="message" class="message" role="status"
+               aria-live="polite"></p>
+
+        </form>
+    </div>
+</section>
+
+<footer>
+    <h3>KalaSetu AI</h3>
+    <p>Preserving Tradition. Empowering Artisans.</p>
+    <p>&copy; 2026 KalaSetu AI. All rights reserved.</p>
+</footer>
+
+<script>
+    const form = document.getElementById("productForm");
+    const imageInput = document.getElementById("productImage");
+    const imagePreview = document.getElementById("imagePreview");
+    const message = document.getElementById("message");
+
+    let selectedImageData = "";
+
+    // Preview and validate image
+    imageInput.addEventListener("change", function () {
+        const file = imageInput.files[0];
+
+        selectedImageData = "";
+        imagePreview.style.display = "none";
+        imagePreview.removeAttribute("src");
+
+        if (!file) return;
+
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
+
+        if (!allowedTypes.includes(file.type)) {
+            imageInput.value = "";
+            message.textContent =
+                "Please select a JPG, PNG or WebP image.";
+            message.style.color = "red";
+            return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+            imageInput.value = "";
+            message.textContent =
+                "Please select an image smaller than 2 MB.";
+            message.style.color = "red";
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            selectedImageData = event.target.result;
+            imagePreview.src = selectedImageData;
+            imagePreview.style.display = "block";
+
+            message.textContent = "";
+        };
+
+        reader.onerror = function () {
+            message.textContent = "Unable to read the selected image.";
+            message.style.color = "red";
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    // Demo description generator
+    document.getElementById("aiButton").addEventListener("click", function () {
+        const name = document.getElementById("productName").value.trim();
+        const category = document.getElementById("category").value;
+        const material = document.getElementById("material").value.trim();
+        const description = document.getElementById("description");
+
+        if (!name || !category) {
+            message.textContent =
+                "Enter the product name and select a category first.";
+            message.style.color = "red";
+            return;
+        }
+
+        description.value =
+            name + " is a handmade " + category.toLowerCase() +
+            " product, carefully created by skilled artisans." +
+            (material ? " Made using " + material + "." : "") +
+            " This unique craft reflects traditional craftsmanship " +
+            "and is suitable for customers who appreciate handmade products.";
+
+        message.textContent =
+            "Demo description created! You can edit it before saving.";
+        message.style.color = "#75452c";
+    });
+
+    // Save product in browser localStorage
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("productName").value.trim();
+        const category = document.getElementById("category").value;
+        const price = Number(document.getElementById("price").value);
+        const material = document.getElementById("material").value.trim();
+        const description = document.getElementById("description").value.trim();
+
+        if (!name || !category || !description) {
+            message.textContent = "Please complete all required fields.";
+            message.style.color = "red";
+            return;
+        }
+
+        if (!Number.isFinite(price) || price <= 0) {
+            message.textContent =
+                "Enter a valid price greater than zero.";
+            message.style.color = "red";
+            return;
+        }
+
+        if (!selectedImageData) {
+            message.textContent = "Please select a valid product image.";
+            message.style.color = "red";
+            return;
+        }
+
+        const product = {
+            id: Date.now(),
+            name: name,
+            category: category,
+            price: price,
+            material: material,
+            description: description,
+            image: selectedImageData
+        };
+
+        try {
+            const products = JSON.parse(
+                localStorage.getItem("kalasetuProducts") || "[]"
+            );
+
+            if (!Array.isArray(products)) {
+                throw new Error("Invalid saved product data");
+            }
+
+            products.push(product);
+
+            localStorage.setItem(
+                "kalasetuProducts",
+                JSON.stringify(products)
+            );
+
+            message.textContent =
+                "Product saved successfully! Opening My Products...";
+            message.style.color = "green";
+
+            form.reset();
+            selectedImageData = "";
+            imagePreview.removeAttribute("src");
+            imagePreview.style.display = "none";
+
+            setTimeout(function () {
+                window.location.href = "products.html";
+            }, 1200);
+
+        } catch (error) {
+            message.textContent =
+                "Unable to save this product. Try a smaller image.";
+            message.style.color = "red";
+        }
+    });
+</script>
+
+</body>
+</html>
+

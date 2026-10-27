@@ -1,0 +1,201 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | KalaSetu AI</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .profile-container {
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fffaf3;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container h1 {
+            text-align: center;
+            color: #8b4513;
+            margin-bottom: 10px;
+        }
+
+        .profile-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .profile-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #ead3b5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+        }
+
+        .profile-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 11px;
+            border: 1px solid #d6b99b;
+            border-radius: 7px;
+            font-size: 15px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .profile-buttons {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .profile-buttons button,
+        .profile-buttons a {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .save-btn {
+            background: #8b4513;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #e8d8c5;
+            color: #4e342e;
+        }
+
+        #profileMessage {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-weight: bold;
+            color: #387443;
+        }
+
+        @media (max-width: 600px) {
+            .profile-container {
+                margin: 20px 12px;
+                padding: 20px;
+            }
+
+            .profile-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width,
+            .profile-buttons,
+            #profileMessage {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>KalaSetu AI</h1>
+        <p>Empowering Rural Artisans Through Technology</p>
+    </header>
+
+    <nav style="text-align:center; padding:15px;">
+        <a href="../index.html">Home</a> |
+        <a href="dashboard.html">Dashboard</a> |
+        <a href="products.html">Products</a> |
+        <a href="verification.html">Verification</a>
+    </nav>
+
+    <main class="profile-container">
+
+        <div class="profile-icon">👤</div>
+
+        <h1>My Profile</h1>
+        <p class="profile-subtitle">View and update your artisan details</p>
+
+        <form id="profileForm" class="profile-form">
+
+            <div class="form-group">
+                <label for="artisanName">Full Name</label>
+                <input type="text" id="artisanName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="artisanEmail">Email Address</label>
+                <input type="email" id="artisanEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="artisanPhone">Phone Number</label>
+                <input type="tel" id="artisanPhone"
+                       placeholder="Enter phone number"
+                       pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="artisanLocation">Location</label>
+                <input type="text" id="artisanLocation"
+                       placeholder="Village / District" required>
+            </div>
+
+            <div class="form-group">
+                <label for="craftType">Craft Type</label>
+                <select id="craftType" required>
+                    <option value="">Select craft type</option>
+                    <option>Handloom and Weaving</option>
+                    <option>Pottery</option>
+                    <option>Wood Carving</option>
+                    <option>Handicrafts</option>
+                    <option>Jewellery Making</option>
+                    <option>Painting</option>
+                    <option>Basket Making</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Preferred Language</label>
+                <select id="language" required>
+                    <option value="">Select language</option>
+                    <option>Tamil</option>
+                    <option>English</option>
+                    <option>Hindi</option>
+                    <option>Telugu</option>
+```

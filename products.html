@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Products | KalaSetu AI</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .products-hero {
+            background: #f0dfcb;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .products-hero h1 {
+            color: #75452c;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .products-hero p {
+            color: #72645a;
+            line-height: 1.7;
+        }
+
+        .products-section {
+            padding: 40px 7%;
+            background: #fffaf3;
+            min-height: 60vh;
+        }
+
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .search-container input,
+        .search-container select {
+            padding: 13px;
+            border: 1px solid #ddcabb;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-container input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-container select {
+            min-width: 170px;
+            background: white;
+        }
+
+        .products-heading {
+            color: #75452c;
+            margin-bottom: 25px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            background: #f0dfcb;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #75452c;
+            margin-bottom: 10px;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: #f0dfcb;
+            color: #75452c;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            color: #72645a;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #75452c;
+            margin-bottom: 15px;
+        }
+
+        .view-button {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            text-align: center;
+            background: #75452c;
+            color: white;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .view-button:hover {
+            background: #59331f;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 15px;
+            color: #72645a;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .product-message {
+            margin-top: 20px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KalaSetu <span>AI</span></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html">Explore Products</a>
+        <a href="register.html">Become an Artisan</a>
+        <a href="login.html" class="login-btn">Login</a>
+    </nav>
+</header>
+
+<section class="products-hero">
+    <h1>Discover Handmade Treasures</h1>
+
+    <p>
+        Explore unique crafts created with creativity,
+        tradition and care by rural artisans.
+    </p>
+</section>
+
+<section class="products-section">
+
+    <div class="search-container">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search handmade products..."
+            aria-label="Search products"
+        >
+
+        <select id="categoryFilter" aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option value="Pottery">Pottery</option>
+            <option value="Handloom">Handloom</option>
+            <option value="Wooden Crafts">Wooden Crafts</option>
+            <option value="Jewellery">Jewellery</option>
+            <option value="Home Decor">Home Decor</option>
+            <option value="Handicrafts">Handicrafts</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <h2 class="products-heading">Our Handmade Collection</h2>
+
+    <div class="products-grid" id="productsGrid">
+
+        <!-- Sample Product 1 -->
+        <article class="product-card"
+            data-name="Handmade Clay Pot"
+            data-category="Pottery">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=700&q=80"
+                alt="Ceramic pottery"
+            >
+
+            <div class="product-info">
+                <span class="product-category">Pottery</span>
+                <h3>Handmade Clay Pot</h3>
+
+                <p class="product-description">
+                    A decorative pottery item inspired by traditional crafts.
+                </p>
+
+                <p class="product-price">₹500</p>
+
+                <button class="view-button" type="button"
+                    data-product="Handmade Clay Pot">
+                    View Details
+                </button>
+            </div>
+        </article>
+
+        <!-- Sample Product 2 -->
+        <article class="product-card"
+            data-name="Traditional Handloom"
+            data-category="Handloom">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=700&q=80"
+                alt="Textile craft"
+            >
+
+            <div class="product-info">
+                <span class="product-category">Handloom</span>
+                <h3>Traditional Handloom</h3>
+
+                <p class="product-description">
+                    A textile craft showcasing traditional weaving.
+                </p>
+
+                <p class="product-price">₹800</p>
+
+                <button class="view-button" type="button"
+                    data-product="Traditional Handloom">
+                    View Details
+                </button>
+            </div>
+        </article>
+
+        <!-- Sample Product 3 -->
+        <article class="product-card"
+            data-name="Wooden Craft"
+            data-category="Wooden Crafts">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=700&q=80"
+                alt="Decorative handmade craft"
+            >
+
+            <div class="product-info">
+                <span class="product-category">Wooden Crafts</span>
+                <h3>Wooden Craft</h3>
+
+                <p class="product-description">
+                    Decorative craft inspiration for handmade collections.
+                </p>
+
+                <p class="product-price">₹650</p>
+
+                <button class="view-button" type="button"
+                    data-product="Wooden Craft">
+                    View Details
+                </button>
+            </div>
+        </article>
+
+    </div>
+
+    <p id="noResults" class="no-results" hidden>
+        No products found. Try another search or category.
+    </p>
+
+    <p id="productMessage" class="product-message"
+       role="status" aria-live="polite"></p>
+
+</section>
+
+<footer>
+    <h3>KalaSetu AI</h3>
+    <p>Preserving Tradition. Empowering Artisans.</p>
+    <p>&copy; 2026 KalaSetu AI. All rights reserved.</p>
+</footer>
+
+```html
+<script>
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const productsGrid = document.getElementById("productsGrid");
+    const noResults = document.getElementById("noResults");
+    const productMessage = document.getElementById("productMessage");
+
+    // Get products from browser storage
+    function getSavedProducts() {
+        try {
+            const products = JSON.parse(
+                localStorage.getItem("kalasetuProducts") || "[]"
+            );
+            return Array.isArray(products) ? products : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    // Save products to browser storage
+    function saveProducts(products) {
+        localStorage.setItem(
+            "kalasetuProducts",
+            JSON.stringify(products)
+        );
+    }
+
+    // Create a product card
+    function createProductCard(product) {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.dataset.name = product.name || "";
+        card.dataset.category = product.category || "";
+        card.dataset.savedProduct = "true";
+
+        const image = document.createElement("img");
+        image.className = "product-image";
+        image.src = product.image || "";
+        image.alt = product.name || "Handmade product";
+
+        const info = document.createElement("div");
+        info.className = "product-info";
+
+        const category = document.createElement("span");
+        category.className = "product-category";
+        category.textContent = product.category || "Other";
+
+        const title = document.createElement("h3");
+        title.textContent = product.name || "Untitled Product";
+
+        const description = document.createElement("p");
+        description.className = "product-description";
+        description.textContent = product.description || "";
+
+        const material = document.createElement("p");
+        material.className = "product-description";
+        material.textContent = product.material
+            ? "Material: " + product.material
+            : "";
+
+        const price = document.createElement("p");
+        price.className = "product-price";
+        price.textContent =
+            "₹" + Number(product.price || 0).toLocaleString("en-IN");
+
+        // View Details button
+        const viewButton = document.createElement("button");
+        viewButton.className = "view-button";
+        viewButton.type = "button";
+        viewButton.textContent = "View Details";
+
+        viewButton.addEventListener("click", function() {
+            productMessage.textContent =
+                product.name +
+                " | Category: " + product.category +
+                " | Price: ₹" + product.price +
+                " | Material: " + (product.material || "Not specified") +
+                " | Description: " + product.description;
+        });
+
+        // Edit Product button
+        const editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.textContent = "✏️ Edit Product";
+        editButton.style.cssText =
+            "width:100%; padding:12px; margin-top:10px;" +
+            "background:#d5a66a; color:#3e2a1e; border:none;" +
+            "border-radius:6px; cursor:pointer; font-size:14px;";
+
+        editButton.addEventListener("click", function() {
+            const products = getSavedProducts();
+
+            const index = products.findIndex(function(item) {
+                return item.id === product.id;
+            });
+
+            if (index === -1) {
+                productMessage.textContent =
+                    "Product not found in browser storage.";
+                return;
+            }
+
+            // Ask for updated values
+            const newName = prompt(
+                "Enter product name:",
+                product.name
+            );
+
+            if (newName === null) return;
+
+            const newPrice = prompt(
+                "Enter product price (₹):",
+                product.price
+            );
+
+            if (newPrice === null) return;
+
+            const newCategory = prompt(
+                "Enter category (Pottery, Handloom, Wooden Crafts, Jewellery, Home Decor, Handicrafts, Other):",
+                product.category
+            );
+
+            if (newCategory === null) return;
+
+            const newMaterial = prompt(
+                "Enter product material:",
+                product.material || ""
+            );
+
+            if (newMaterial === null) return;
+
+            const newDescription = prompt(
+                "Enter product description:",
+                product.description
+            );
+
+            if (newDescription === null) return;
+
+            const cleanName = newName.trim();
+            const cleanCategory = newCategory.trim();
+            const cleanDescription = newDescription.trim();
+            const cleanMaterial = newMaterial.trim();
+            const cleanPrice = Number(newPrice);
+
+            const allowedCategories = [
+                "Pottery",
+                "Handloom",
+                "Wooden Crafts",
+                "Jewellery",
+                "Home Decor",
+                "Handicrafts",
+                "Other"
+            ];
+
+            if (!cleanName || !cleanCategory || !cleanDescription) {
+                alert("Name, category and description are required.");
+                return;
+            }
+
+            if (!Number.isFinite(cleanPrice) || cleanPrice <= 0) {
+                alert("Please enter a valid price greater than zero.");
+                return;
+            }
+
+            if (!allowedCategories.includes(cleanCategory)) {
+                alert("Please enter a category from the provided list.");
+                return;
+            }
+
+            products[index].name = cleanName;
+            products[index].price = cleanPrice;
+            products[index].category = cleanCategory;
+            products[index].material = cleanMaterial;
+            products[index].description = cleanDescription;
+
+            try {
+                saveProducts(products);
+                productMessage.textContent =
+                    "Product updated successfully!";
+                renderSavedProducts();
+            } catch (error) {
+                alert("Unable to save the changes. Please try again.");
+            }
+        });
+
+        // Delete Product button
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.textContent = "🗑️ Delete Product";
+        deleteButton.style.cssText =
+            "width:100%; padding:12px; margin-top:10px;" +
+            "background:#b33a3a; color:white; border:none;" +
+            "border-radius:6px; cursor:pointer; font-size:14px;";
+
+        deleteButton.addEventListener("click", function() {
+            if (!confirm('Delete "' + product.name + '"?')) {
+                return;
+            }
+
+            const products = getSavedProducts();
+
+            const index = products.findIndex(function(item) {
+                return item.id === product.id;
+            });
+
+            if (index === -1) {
+                productMessage.textContent = "Product not found.";
+                return;
+            }
+
+            products.splice(index, 1);
+
+            try {
+                saveProducts(products);
+                productMessage.textContent =
+                    "Product deleted successfully!";
+                renderSavedProducts();
+            } catch (error) {
+                alert("Unable to delete the product.");
+            }
+        });
+
+        info.appendChild(category);
+        info.appendChild(title);
+        info.appendChild(description);
+        info.appendChild(material);
+        info.appendChild(price);
+        info.appendChild(viewButton);
+        info.appendChild(editButton);
+        info.appendChild(deleteButton);
+
+        card.appendChild(image);
+        card.appendChild(info);
+
+        return card;
+    }
+
+    // Display all saved products
+    function renderSavedProducts() {
+        productsGrid.querySelectorAll(
+            '[data-saved-product="true"]'
+        ).forEach(function(card) {
+            card.remove();
+        });
+
+        const products = getSavedProducts();
+
+        products.forEach(function(product) {
+            productsGrid.prepend(createProductCard(product));
+        });
+
+        filterProducts();
+    }
+
+    // Search and category filtering
+    function filterProducts() {
+        const searchText = searchInput.value.trim().toLowerCase();
+        const selectedCategory = categoryFilter.value;
+
+        const cards = productsGrid.querySelectorAll(".product-card");
+        let visibleCount = 0;
+
+        cards.forEach(function(card) {
+            const name = (card.dataset.name || "").toLowerCase();
+            const category = card.dataset.category || "";
+
+            const matchesSearch = name.includes(searchText);
+            const matchesCategory =
+                !selectedCategory || category === selectedCategory;
+
+            const visible = matchesSearch && matchesCategory;
+
+            card.hidden = !visible;
+
+            if (visible) {
+                visibleCount++;
+            }
+        });
+
+        noResults.hidden = visibleCount !== 0;
+    }
+
+    searchInput.addEventListener("input", filterProducts);
+    categoryFilter.addEventListener("change", filterProducts);
+
+    // Existing sample product details
+    document.querySelectorAll("[data-product]").forEach(function(button) {
+        button.addEventListener("click", function() {
+            productMessage.textContent =
+                button.dataset.product +
+                ": Sample listing. Detailed product information " +
+                "will be connected through the backend.";
+        });
+    });
+
+    // Initial display
+    renderSavedProducts();
+</script>
+```
+
+
+</body>
+</html>
+
